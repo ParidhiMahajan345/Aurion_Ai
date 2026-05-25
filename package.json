@@ -1,0 +1,26 @@
+{
+  "name": "aurion-ai",
+  "version": "2.0.0",
+  "private": true,
+
+  "homepage": "https://ParidhiMahajan345.github.io/aurion-ai",
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "gh-pages": "^6.3.0",
+    "vite": "^5.3.1"
+  }
+}

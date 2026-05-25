@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-void:        #020408;
+  --bg-deep:        #060d14;
+  --bg-surface:     #0a1520;
+  --bg-card:        #0d1e2e;
+  --bg-card-hover:  #122436;
+  --border:         #1a3a52;
+  --border-glow:    #0e7aad;
+  --neon-blue:      #00d4ff;
+  --neon-cyan:      #00ffea;
+  --neon-green:     #00ff88;
+  --neon-yellow:    #ffdd00;
+  --neon-orange:    #ff8800;
+  --neon-red:       #ff3355;
+  --neon-purple:    #bf5fff;
+  --text-primary:   #e8f4ff;
+  --text-secondary: #7aa8c4;
+  --text-dim:       #3d6680;
+  --critical:       #ff3355;
+  --high:           #ff8800;
+  --medium:         #ffdd00;
+  --low:            #00ff88;
+  --healthy:        #00ff88;
+  --degraded:       #ffdd00;
+  --warning:        #ff8800;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.015) 2px,
+    rgba(0, 212, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 2px; }
+
+.font-mono  { font-family: 'Space Mono', monospace; }
+.font-title { font-family: 'Orbitron', monospace; }
+
+/* Glow effects */
+.glow-blue   { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+.glow-green  { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+.glow-red    { box-shadow: 0 0 20px rgba(255, 51, 85, 0.3); }
+.glow-orange { box-shadow: 0 0 20px rgba(255, 136, 0, 0.3); }
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes number-roll {
+  from { transform: translateY(-10px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.animate-fade-in-up  { animation: fade-in-up 0.4s ease forwards; }
+.animate-slide-right { animation: slide-in-right 0.3s ease forwards; }
+.animate-pulse-glow  { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-spin        { animation: spin 1s linear infinite; }
+.animate-blink       { animation: blink 1s step-end infinite; }
